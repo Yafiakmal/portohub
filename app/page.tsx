@@ -1,75 +1,324 @@
 "use client";
 
+import { Code2, Layers, Wrench, ExternalLink, Mail } from "lucide-react";
+import { SiGithub, SiLinkerd } from "@icons-pack/react-simple-icons";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { bebasNeue, poppins } from "@/lib/fonts";
-import { TypeAnimation } from "react-type-animation";
+import Avatar from "@/components/my/Avatar";
+import { Badge } from "@/components/ui/badge";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-export default function Home() {
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const profile = {
+  firstname: "Muhammad",
+  lastname: "Yafi Akmal",
+  tagline:
+    "You can expect me as a Front-end Web developer. I write clean code and minimalist design interfaces",
+};
+
+const contact = {
+  email: "yafi@example.com",
+  github: "https://github.com/yafi",
+  linkedin: "https://linkedin.com/in/yafi",
+};
+
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+const skillGroups = [
+  {
+    label: "Programming Language",
+    icon: Code2,
+    skills: ["Javascript", "Typescript", "Python", "Golang"],
+  },
+  {
+    label: "Frameworks & Libraries",
+    icon: Layers,
+    skills: ["React", "Next.js", "Vue.js", "Gorm", "Gin"],
+  },
+  {
+    label: "Tools & Platforms",
+    icon: Wrench,
+    skills: ["Git", "Docker", "AWS", "Firebase"],
+  },
+];
+
+const projects = [
+  {
+    title: "Project Alpha",
+    desc: "Full-stack web app with Next.js & Go",
+    href: "#",
+  },
+  {
+    title: "Project Beta",
+    desc: "E-commerce dashboard with real-time data",
+    href: "#",
+  },
+  {
+    title: "Project Gamma",
+    desc: "REST API service deployed on AWS",
+    href: "#",
+  },
+  {
+    title: "Project Delta",
+    desc: "Mobile-first React Native application",
+    href: "#",
+  },
+  {
+    title: "Project Epsilon",
+    desc: "UI component library with Storybook",
+    href: "#",
+  },
+];
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function SkillGroup({
+  label,
+  icon: Icon,
+  skills,
+}: {
+  label: string;
+  icon: React.ElementType;
+  skills: string[];
+}) {
   return (
-    <main className="relative flex flex-col w-full h-screen">
-      {/* Layer atas */}
-      {/* <div className="absolute inset-0 pointer-events-none w-screen h-65 flex items-center justify-center  ">
-        <div className="flex justify-center items-center w-[80%] h-35 bg-[#030149] rounded-xl">
-          <h1 className={`${bebasNeue.className} text-white text-[100px] text`}>
-            Portofolio
-          </h1>
-        </div>
-      </div> */}
-
-      {/* Layer bawah */}
-      <div className="min-h-screen max-h-screen flex flex-col md:flex-row items-center justify-center gap-5 px-6 md:px-13 ">
-        {/* IMAGE */}
-        <div className="w-full md:w-1/3 lg:w-1/4 h-1/2.5 md:h-1/2 flex justify-center items-center ">
-          <Image
-            src="/my3.png"
-            alt="my image"
-            width={200}
-            height={200}
-            style={{ height: "100%", width: "auto" }}
-            priority
-          />
-        </div>
-
-        {/* TEXT */}
-        <div className="p-7 w-full md:w-1/2 flex flex-col ">
-          <h1 className="text-primary font-bold text-xl md:text-2xl">
-            Hi, I'm Yafi
-          </h1>
-          <br />
-          <p className="text-primary text-left text-xl md:text-2xl leading-relaxed min-h-[4rem]">
-            you can expect me as a web frontend developer and web backnd
-            developer
-            {/* <TypeAnimation
-              sequence={[
-                "you can expect me as a web frontend developer and web backnd developer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            /> */}
-          </p>
-
-          <br />
-          <Button
-            asChild
-            variant="default"
-            className="w-fit h-fit gap-2 group bg-primary"
+    <div className="flex flex-col gap-2">
+      <h3 className="flex items-center gap-2 text-lg md:text-xl">
+        <Icon size={18} aria-hidden />
+        {label}
+      </h3>
+      <div className="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <Badge
+            key={skill}
+            variant="outline"
+            className="text-primary-foreground"
           >
-            <Link href="/projects">
-              <h1
-                className={`${bebasNeue.className}  text-xl md:text-2xl leading-relaxed`}
-              >
-                Know me More
-              </h1>
-              <ArrowRight className="w-4 h-4 animate-bounce " />
-            </Link>
+            {skill}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({
+  title,
+  desc,
+  href,
+}: {
+  title: string;
+  desc: string;
+  href: string;
+}) {
+  return (
+    <Card className="h-full">
+      <CardContent className="flex flex-col justify-between gap-4 p-6 h-full">
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold text-base">{title}</span>
+          <span className="text-sm text-muted-foreground">{desc}</span>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="ghost" size="sm" asChild>
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              <SiGithub />
+              Code
+            </a>
+          </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              <ExternalLink size={14} />
+              Live
+            </a>
           </Button>
         </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function SectionCard({ children }: { children: React.ReactNode }) {
+  return (
+    <Card className="bg-primary border-0 shadow-xl w-full md:w-2/3">
+      <CardContent className="bg-transparent text-primary-foreground w-full p-4 md:px-8">
+        {children}
+      </CardContent>
+    </Card>
+  );
+}
+
+function SectionWrapper({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="flex flex-col items-center w-full scroll-mt-20">
+      <h2 className="text-2xl md:text-3xl text-center mt-8 mb-4">{title}</h2>
+      <SectionCard>{children}</SectionCard>
+    </section>
+  );
+}
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+// sticky top-0  → navbar menempel di atas saat scroll
+// z-50          → selalu di atas konten lain
+// backdrop-blur → efek kaca transparan
+
+function Header() {
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-center px-4 md:px-8">
+        <nav className="flex items-center gap-1 md:gap-2">
+          {navItems.map((item) => (
+            <Button key={item.label} variant="ghost" size="sm" asChild>
+              <a href={item.href}>{item.label}</a>
+            </Button>
+          ))}
+        </nav>
       </div>
-    </main>
+    </header>
+  );
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
+function Footer() {
+  const year = new Date().getFullYear();
+
+  const links = [
+    { label: "Email", href: `mailto:${contact.email}`, icon: Mail },
+    { label: "GitHub", href: contact.github, icon: SiGithub },
+    { label: "LinkedIn", href: contact.linkedin, icon: SiLinkerd },
+  ];
+
+  return (
+    <footer
+      id="contact"
+      className="scroll-mt-20 w-full border-t bg-muted mt-16"
+    >
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 py-10 md:px-8">
+        <p className="text-lg font-semibold">
+          {profile.firstname} {profile.lastname}
+        </p>
+
+        <div className="flex gap-3">
+          {links.map(({ label, href, icon: Icon }) => (
+            <Button key={label} variant="outline" size="sm" asChild>
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                <Icon size={14} />
+                {label}
+              </a>
+            </Button>
+          ))}
+        </div>
+
+        <p className="text-sm text-muted-foreground">
+          © {year} {profile.firstname} {profile.lastname}. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
+
+export default function Home() {
+  const fullName = `${profile.firstname} ${profile.lastname}`;
+
+  return (
+    <>
+      <Header />
+
+      <main className="px-4 md:px-16 flex flex-col items-center gap-4">
+        {/* ── About / Profile ── */}
+        <section
+          id="about"
+          className="flex flex-col items-center w-full scroll-mt-20"
+        >
+          <Avatar
+            src="/my3.png"
+            name={fullName}
+            size="2xl"
+            className="-mb-8 bg-background"
+          />
+          <Card className="bg-primary text-primary-foreground border-0 shadow-xl w-full md:w-2/3">
+            <CardHeader className="justify-center pb-4 pt-8 px-12">
+              <CardTitle className="text-4xl md:text-5xl text-center leading-14 md:leading-18 break-words min-w-0">
+                {profile.firstname} <br /> {profile.lastname}
+              </CardTitle>
+              <span className="text-center">---</span>
+            </CardHeader>
+            <CardContent className="bg-background/25 w-full p-4 md:px-8">
+              <p className="text-md md:text-lg text-center">
+                {profile.tagline}
+              </p>
+            </CardContent>
+            <CardFooter className="justify-center gap-4">
+              {/* Button ini sekarang beneran anchor ke section, bukan dummy */}
+              <Button variant="secondary" asChild>
+                <a href="#projects">See My Work</a>
+              </Button>
+              <Button variant="secondary" asChild>
+                <a href="#contact">Contact me</a>
+              </Button>
+            </CardFooter>
+          </Card>
+        </section>
+
+        {/* ── Skills ── */}
+        <SectionWrapper id="skills" title="Skills">
+          <div className="flex flex-col gap-6">
+            {skillGroups.map((group) => (
+              <SkillGroup key={group.label} {...group} />
+            ))}
+          </div>
+        </SectionWrapper>
+
+        {/* ── Projects ── */}
+        <SectionWrapper id="projects" title="Projects">
+          <Carousel opts={{ align: "start" }} className="w-full">
+            <CarouselContent className="-ml-2">
+              {projects.map((project) => (
+                <CarouselItem
+                  key={project.title}
+                  className="pl-2 basis-4/5 sm:basis-1/2 lg:basis-1/3"
+                >
+                  <ProjectCard {...project} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-end gap-2 mt-4">
+              <CarouselPrevious className="static translate-y-0" />
+              <CarouselNext className="static translate-y-0" />
+            </div>
+          </Carousel>
+        </SectionWrapper>
+      </main>
+
+      <Footer />
+    </>
   );
 }

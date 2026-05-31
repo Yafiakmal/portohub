@@ -49,9 +49,7 @@
 }
 
 :root {
-  /* --background: oklch(1 0 0); */
-  --background: #fff4e8;
-  /* --background: oklch(0.145 0 0); */
+  --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -83,6 +81,21 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* brand */
+  --cream-base: #f5efe6;
+  --cream-light: #fffaf4;
+  --cream-border: #e0d5c8;
+  --cream-muted: #6b5e52;
+  --black-primary: #1a1a1a;
+
+  /* Layer 2 — semantic */
+  --background: var(--cream-base);
+  --foreground: var(--black-primary);
+  --muted-foreground: var(--cream-muted);
+  --primary: var(--black-primary);
+  --primary-foreground: var(--cream-base);
+  /* Add more  */
 }
 
 .dark {
