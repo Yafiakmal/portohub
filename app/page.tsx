@@ -26,11 +26,11 @@ const profile = {
   firstname: "Muhammad",
   lastname: "Yafi Akmal",
   tagline:
-    "You can expect me as a Front-end Web developer. I write clean code and minimalist design interfaces",
+    "You can expect me as a Front-end Web developer. I write clean code and design interfaces that feel alive",
 };
 
 const contact = {
-  email: "yafi@example.com",
+  email: "myafiakmal@gmail.com",
   github: "https://github.com/Yafiakmal",
   linkedin: "https://linkedin.com/in/muhammadyafiakmal",
 };
