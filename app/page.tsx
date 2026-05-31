@@ -26,7 +26,7 @@ const profile = {
   firstname: "Muhammad",
   lastname: "Yafi Akmal",
   tagline:
-    "You can expect me as a Front-end Web developer. I write clean code and design interfaces that feel alive",
+    "You can expect me as a Front-end Web developer. I write clean code and design interfaces that feel alive. I am passionate about learning new technologies and continuously improving my skills.",
 };
 
 const contact = {
