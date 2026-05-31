@@ -31,8 +31,8 @@ const profile = {
 
 const contact = {
   email: "yafi@example.com",
-  github: "https://github.com/yafi",
-  linkedin: "https://linkedin.com/in/yafi",
+  github: "https://github.com/Yafiakmal",
+  linkedin: "https://linkedin.com/in/muhammadyafiakmal",
 };
 
 const navItems = [
@@ -46,45 +46,34 @@ const skillGroups = [
   {
     label: "Programming Language",
     icon: Code2,
-    skills: ["Javascript", "Typescript", "Python", "Golang"],
+    skills: [
+      "Javascript",
+      "Typescript",
+      "Python",
+      "Golang",
+      "HTML",
+      "CSS",
+      "SQL",
+    ],
   },
   {
     label: "Frameworks & Libraries",
     icon: Layers,
-    skills: ["React", "Next.js", "Vue.js", "Gorm", "Gin"],
+    skills: ["React", "Next.js", "Gorm", "Gin"],
   },
   {
     label: "Tools & Platforms",
     icon: Wrench,
-    skills: ["Git", "Docker", "AWS", "Firebase"],
+    skills: ["Git", "Docker"],
   },
 ];
 
 const projects = [
   {
-    title: "Project Alpha",
-    desc: "Full-stack web app with Next.js & Go",
-    href: "#",
-  },
-  {
-    title: "Project Beta",
-    desc: "E-commerce dashboard with real-time data",
-    href: "#",
-  },
-  {
-    title: "Project Gamma",
-    desc: "REST API service deployed on AWS",
-    href: "#",
-  },
-  {
-    title: "Project Delta",
-    desc: "Mobile-first React Native application",
-    href: "#",
-  },
-  {
-    title: "Project Epsilon",
-    desc: "UI component library with Storybook",
-    href: "#",
+    title: "Inventory System",
+    desc: "Full-stack web app with fullstack Next.js and Supabase.",
+    href: "https://lpka.muhammadyafiakmal.my.id",
+    githuburl: "https://github.com/Yafiakmal/LPKA",
   },
 ];
 
@@ -124,10 +113,12 @@ function ProjectCard({
   title,
   desc,
   href,
+  githuburl,
 }: {
   title: string;
   desc: string;
   href: string;
+  githuburl: string;
 }) {
   return (
     <Card className="h-full">
@@ -138,7 +129,7 @@ function ProjectCard({
         </div>
         <div className="flex gap-2">
           <Button variant="ghost" size="sm" asChild>
-            <a href={href} target="_blank" rel="noopener noreferrer">
+            <a href={githuburl} target="_blank" rel="noopener noreferrer">
               <SiGithub />
               Code
             </a>
