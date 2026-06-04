@@ -1,7 +1,8 @@
 "use client";
 
 import { Code2, Layers, Wrench, ExternalLink, Mail } from "lucide-react";
-import { SiGithub, SiLinkerd } from "@icons-pack/react-simple-icons";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { FaLinkedin } from "react-icons/fa";
 import {
   Card,
   CardHeader,
@@ -59,12 +60,12 @@ const skillGroups = [
   {
     label: "Frameworks & Libraries",
     icon: Layers,
-    skills: ["React", "Next.js", "Gorm", "Gin"],
+    skills: ["React", "Next.js", "Gorm", "Gin", "Tailwindcss"],
   },
   {
     label: "Tools & Platforms",
     icon: Wrench,
-    skills: ["Git", "Docker"],
+    skills: ["Git", "Docker", "Postgresql", "Supabase"],
   },
 ];
 
@@ -77,7 +78,7 @@ const projects = [
   },
   {
     title: "Dummy JSON API consumtion",
-    desc: "Web Fronted Next.js, just trying to clone e-commerce layout. data source from dummy json public API ",
+    desc: "Web Frontend Next.js consuming DummyJSON public API, built with e-commerce inspired layout including product search ",
     href: "https://muhammadyafiakmal.my.id/dummy-json",
     githuburl:
       "https://github.com/Yafiakmal/portohub/tree/main/app/(sidebar)/dummy-json",
@@ -206,7 +207,7 @@ function Footer() {
   const links = [
     { label: "Email", href: `mailto:${contact.email}`, icon: Mail },
     { label: "GitHub", href: contact.github, icon: SiGithub },
-    { label: "LinkedIn", href: contact.linkedin, icon: SiLinkerd },
+    { label: "LinkedIn", href: contact.linkedin, icon: FaLinkedin },
   ];
 
   return (
