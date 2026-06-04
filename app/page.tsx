@@ -75,6 +75,13 @@ const projects = [
     href: "https://lpka.muhammadyafiakmal.my.id",
     githuburl: "https://github.com/Yafiakmal/LPKA",
   },
+  {
+    title: "Dummy JSON API consumtion",
+    desc: "Web Fronted Next.js, just trying to clone e-commerce layout. data source from dummy json public API ",
+    href: "https://muhammadyafiakmal.my.id/dummy-json",
+    githuburl:
+      "https://github.com/Yafiakmal/portohub/tree/main/app/(sidebar)/dummy-json",
+  },
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -96,11 +103,7 @@ function SkillGroup({
       </h3>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill) => (
-          <Badge
-            key={skill}
-            variant="outline"
-            className="text-primary-foreground"
-          >
+          <Badge key={skill} variant="outline" className="text-primary">
             {skill}
           </Badge>
         ))}
@@ -148,10 +151,8 @@ function ProjectCard({
 
 function SectionCard({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="bg-primary border-0 shadow-xl w-full md:w-2/3">
-      <CardContent className="bg-transparent text-primary-foreground w-full p-4 md:px-8">
-        {children}
-      </CardContent>
+    <Card className="bg-muted text-muted-foreground border-primary border-1 shadow-xl w-full md:w-2/3">
+      <CardContent className="w-full p-4 md:px-8">{children}</CardContent>
     </Card>
   );
 }
@@ -166,7 +167,10 @@ function SectionWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="flex flex-col items-center w-full scroll-mt-20">
+    <section
+      id={id}
+      className="flex flex-col items-center w-full scroll-mt-20 "
+    >
       <h2 className="text-2xl md:text-3xl text-center mt-8 mb-4">{title}</h2>
       <SectionCard>{children}</SectionCard>
     </section>
@@ -255,12 +259,12 @@ export default function Home() {
             size="2xl"
             className="-mb-8 bg-background"
           />
-          <Card className="bg-primary text-primary-foreground border-0 shadow-xl w-full md:w-2/3">
+          <Card className="bg-muted text-muted-foreground border-primary border-1 shadow-xl w-full md:w-2/3">
             <CardHeader className="justify-center pb-4 pt-8 px-12">
               <CardTitle className="text-4xl md:text-5xl text-center leading-14 md:leading-18 break-words min-w-0">
                 {profile.firstname} <br /> {profile.lastname}
               </CardTitle>
-              <span className="text-center">---</span>
+              <span className="text-center text-primary">---</span>
             </CardHeader>
             <CardContent className="bg-background/25 w-full p-4 md:px-8">
               <p className="text-md md:text-lg text-center">
@@ -268,11 +272,10 @@ export default function Home() {
               </p>
             </CardContent>
             <CardFooter className="justify-center gap-4">
-              {/* Button ini sekarang beneran anchor ke section, bukan dummy */}
-              <Button variant="secondary" asChild>
+              <Button className="bg-primary" asChild>
                 <a href="#projects">See My Work</a>
               </Button>
-              <Button variant="secondary" asChild>
+              <Button className="bg-primary" asChild>
                 <a href="#contact">Contact me</a>
               </Button>
             </CardFooter>
@@ -281,7 +284,7 @@ export default function Home() {
 
         {/* ── Skills ── */}
         <SectionWrapper id="skills" title="Skills">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 bg ">
             {skillGroups.map((group) => (
               <SkillGroup key={group.label} {...group} />
             ))}
