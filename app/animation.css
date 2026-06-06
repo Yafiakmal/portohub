@@ -1,0 +1,58 @@
+.loading-linear {
+  height: 100%;
+
+  background-color: var(--color-primary);
+  animation: ltr 2s linear infinite;
+}
+
+@keyframes ltr {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+}
+
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+
+  animation: move 4s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    left: 0;
+    top: 180px; /* kiri bawah */
+  }
+
+  25% {
+    left: 0;
+    top: 0; /* kiri atas */
+  }
+
+  50% {
+    left: 180px;
+    top: 0; /* kanan atas */
+  }
+
+  75% {
+    left: 180px;
+    top: 180px; /* kanan bawah */
+  }
+
+  100% {
+    left: 0;
+    top: 180px; /* kembali ke kiri bawah */
+  }
+}
