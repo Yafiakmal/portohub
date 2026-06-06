@@ -45,11 +45,12 @@ export default function HomePage() {
           "w-full px-4 md:px-10 lg:px-15",
         )}
       >
+        {/* Hero */}
         <section
           className={cn(
             "flex flex-col gap-8 justify-center",
             "h-[70vh] md:h-[80vh] w-full",
-            "p-16",
+            "p-8 md:p-16",
             "bg-secondary",
             "text-secondary-foreground",
             "border-4 border-foreground shadow-lg shadow-black",
@@ -69,7 +70,11 @@ export default function HomePage() {
             </h2>
           </div>
           <div>
-            <p className={cn("w-[60%] text-lg md:text-xl lg:text-2xl")}>
+            <p
+              className={cn(
+                "w-[70%] md:w-[60%]  text-lg md:text-xl lg:text-2xl",
+              )}
+            >
               Building web applications with <strong>React</strong>,{" "}
               <strong>TypeScript</strong>, and any other modern frontend
               technologies. create business logic with <strong>Golang</strong>{" "}
@@ -78,14 +83,20 @@ export default function HomePage() {
             </p>
           </div>
           <div className={cn("flex  justify-end w-full ")}>
-            <p className={cn("w-[60%] text-lg md:text-xl lg:text-2xl")}>
+            <p
+              className={cn(
+                "w-[70%] md:w-[60%] text-lg md:text-xl lg:text-2xl",
+              )}
+            >
               {" "}
-              I love technology, but right now, the abstractions are so thick.{" "}
-              <strong className={cn("font-bold")}>fundamentals </strong>
+              I Learning technology, but right now, the abstractions are so
+              thick. <strong className={cn("font-bold")}>fundamentals </strong>
               really important.{" "}
             </p>
           </div>
         </section>
+
+        {/* Tech Stack */}
         <section
           className={cn(
             "flex gap-2 justify-center items-center",
@@ -98,6 +109,8 @@ export default function HomePage() {
           <div className="h-6 w-6 bg-secondary"></div>
           <div className="h-6 w-6 bg-secondary"></div>
         </section>
+
+        {/* projects */}
         <section
           className={cn(
             "h-[70vh] md:h-[80vh] w-full",
