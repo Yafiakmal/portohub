@@ -2,32 +2,110 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import {
+  SiExpress,
+  SiGithub,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  type IconType,
+} from "@icons-pack/react-simple-icons";
+import { SiGo } from "react-icons/si";
+import { type IconType as ReactIconType } from "react-icons";
+
+import { SlSocialLinkedin } from "react-icons/sl";
+
+const navItem: { name: string; href: string; className: string }[] = [
+  {
+    name: "Me",
+    href: "#",
+    className: "underline",
+  },
+  {
+    name: "Watch it",
+    href: "#",
+    className: "underline",
+  },
+  {
+    name: "Blog",
+    href: "#",
+    className: "underline",
+  },
+];
+
+const contacts: {
+  icon: IconType | ReactIconType;
+  name: string;
+  url: string;
+}[] = [
+  {
+    icon: SlSocialLinkedin,
+    name: "Linkedin",
+    url: "https://linkedin.com/in/muhamadyafiakmal",
+  },
+  {
+    icon: SiGithub,
+    name: "Github",
+    url: "https://github.com/Yafiakmal",
+  },
+];
+
+const techList: { name: string; icon: IconType | ReactIconType }[] = [
+  {
+    name: "Node.JS",
+    icon: SiNodedotjs,
+  },
+  {
+    name: "Typescript",
+    icon: SiTypescript,
+  },
+  {
+    name: "React",
+    icon: SiReact,
+  },
+  {
+    name: "Next.JS",
+    icon: SiNextdotjs,
+  },
+  {
+    name: "Tailwind",
+    icon: SiTailwindcss,
+  },
+  {
+    name: "Golang",
+    icon: SiGo,
+  },
+  {
+    name: "Express",
+    icon: SiExpress,
+  },
+  {
+    name: "PostgreSQL",
+    icon: SiPostgresql,
+  },
+];
 
 export default function HomePage() {
   function Header() {
-    const navItem = [
-      {
-        name: "Me",
-        href: "/Me",
-      },
-      {
-        name: "Watch it",
-        href: "/Project",
-      },
-    ];
     return (
       <header
         className={cn(
-          "flex justify-center items-center h-20 px-8 mb-4 bg-accent/60 sticky top-0 left-0 ",
+          "flex justify-center items-center h-20 px-8 mb-4 ",
+          // "bg-linear-to-b from-accent to-transparent",
+          "bg-accent/40",
+          "backdrop-blur-md sticky top-0 left-0 ",
         )}
       >
-        <div className={cn("flex justify-between w-full px-8")}>
+        <div className={cn("flex justify-between w-full md:px-8")}>
           <div>
             <i className={cn("font-black")}>Reconna</i>
           </div>
           <nav className={cn("flex gap-4")}>
             {navItem.map((item, index) => (
-              <Link key={index} href={item.href}>
+              <Link key={index} href={item.href} className={item.className}>
                 {item.name}
               </Link>
             ))}
@@ -66,13 +144,13 @@ export default function HomePage() {
               </span>
             </h1>
             <h2 className={cn("text-xl md:text-2xl lg:text-4xl")}>
-              Web Fullstack Developer
+              Fullstack Web Developer
             </h2>
           </div>
           <div>
             <p
               className={cn(
-                "w-[70%] md:w-[60%]  text-lg md:text-xl lg:text-2xl",
+                "w-[80%] md:w-[60%]  text-lg md:text-xl lg:text-2xl",
               )}
             >
               Building web applications with <strong>React</strong>,{" "}
@@ -85,13 +163,13 @@ export default function HomePage() {
           <div className={cn("flex  justify-end w-full ")}>
             <p
               className={cn(
-                "w-[70%] md:w-[60%] text-lg md:text-xl lg:text-2xl",
+                "w-[80%] md:w-[60%] text-lg md:text-xl lg:text-2xl",
               )}
             >
-              I love learning technologies, but modern abstractions are becoming
+              I love learning technologies. Modern abstractions are becoming
               increasingly complex. Understanding the{" "}
               <strong className={cn("font-bold")}>fundamentals </strong>
-              matters more than ever..{" "}
+              matters more than ever. BUT ...{" "}
             </p>
           </div>
         </section>
@@ -99,15 +177,20 @@ export default function HomePage() {
         {/* Tech Stack */}
         <section
           className={cn(
-            "flex gap-2 justify-center items-center",
+            "flex gap-16 justify-center items-center",
             "h-[10vh]",
             "bg-primary",
             "border-4 border-foreground shadow-lg shadow-black",
           )}
         >
-          <div className="h-6 w-6 bg-secondary"></div>
-          <div className="h-6 w-6 bg-secondary"></div>
-          <div className="h-6 w-6 bg-secondary"></div>
+          {techList.map(({ name, icon: Icon }) => (
+            <div
+              key={name}
+              className={cn("flex justify-center items-center", "h-11 w-11  ")}
+            >
+              <Icon size={"full"} />
+            </div>
+          ))}
         </section>
 
         {/* projects */}
@@ -132,12 +215,54 @@ export default function HomePage() {
         className={cn(
           "flex items-center justify-center gap-8",
           "h-30 w-full mt-8",
-          "bg-accent/60",
+          "bg-primary border-t-4 border-foreground",
         )}
       >
-        <div className="h-full w-full bg-primary"></div>
-        <div className="h-full w-full bg-primary"></div>
-        <div className="h-full w-full bg-primary"></div>
+        <div
+          className={cn(
+            "flex flex-col justify-center items-center",
+            "h-full w-full ",
+          )}
+        >
+          <strong>
+            <i>Reconna</i>
+          </strong>
+        </div>
+        <div
+          className={cn(
+            "flex gap-8 justify-center items-center",
+            "h-full w-full ",
+          )}
+        >
+          {contacts.map(({ icon: Icon, name, url }) => (
+            <a
+              href={url}
+              className={cn(
+                "flex gap-2 justify-center items-center",
+                "underline",
+              )}
+            >
+              <span className={cn("h-4 w-4")}>
+                <Icon size={"full"} />
+              </span>
+              <span>{name}</span>
+            </a>
+          ))}
+        </div>
+        <div
+          className={cn(
+            "flex flex-col justify-center items-center",
+            "h-full w-full ",
+          )}
+        >
+          <nav className={cn("flex gap-4")}>
+            {navItem.map((item, index) => (
+              <Link key={index} href={item.href} className={item.className}>
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </footer>
     );
   }
