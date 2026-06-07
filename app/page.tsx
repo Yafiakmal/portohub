@@ -88,10 +88,10 @@ export default function HomePage() {
                 "w-[70%] md:w-[60%] text-lg md:text-xl lg:text-2xl",
               )}
             >
-              {" "}
-              I Learning technology, but right now, the abstractions are so
-              thick. <strong className={cn("font-bold")}>fundamentals </strong>
-              really important.{" "}
+              I love learning technologies, but modern abstractions are becoming
+              increasingly complex. Understanding the{" "}
+              <strong className={cn("font-bold")}>fundamentals </strong>
+              matters more than ever..{" "}
             </p>
           </div>
         </section>
